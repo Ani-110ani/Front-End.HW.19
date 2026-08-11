@@ -29,3 +29,27 @@ const cardsHtml = results
     `;
   })
   .join("");
+
+flightList.innerHTML = cardsHtml;
+
+const seeMoreBtns = document.querySelectorAll(".see-more");
+const removeBtns = document.querySelectorAll(".remove-card");
+
+seeMoreBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const card = e.target.closest(".card");
+    const details = card.querySelector(".flight-details");
+
+    if (details.style.display === "none") {
+      details.style.display = "block";
+    } else {
+      details.style.display = "none";
+    }
+  });
+});
+
+removeBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.target.closest(".card").remove();
+  });
+});
